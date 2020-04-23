@@ -1,10 +1,14 @@
 package mate.academy.internetshop.model;
 
-public class Item {
+public class Product {
     private Long id;
     private String name;
     private Double price;
-    private int count;
+
+    public Product(String name, Double price) {
+        this.name = name;
+        this.price = price;
+    }
 
     public Long getId() {
         return id;
@@ -30,11 +34,12 @@ public class Item {
         this.price = price;
     }
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
+    @Override
+    public String toString() {
+        return "Product{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", price=" + price
+                + '}';
     }
 }
