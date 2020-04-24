@@ -38,7 +38,7 @@ public class Main {
         productService.create(product2);
 
         User admin = new User("Admin", "admin", "admin");
-        User user = new User("User!", "user1", "1234");
+        User user = new User("User", "user1", "1234");
         userService.create(admin);
         userService.create(user);
 

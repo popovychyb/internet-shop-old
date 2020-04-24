@@ -1,7 +1,6 @@
 package mate.academy.internetshop.service;
 
 import java.util.List;
-import java.util.Optional;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 
@@ -16,5 +15,5 @@ public interface ShoppingCartService {
 
     ShoppingCart getByUserId(Long userId);
 
-    Optional<List<ShoppingCart>> getAllProducts(ShoppingCart shoppingCart);
+    List<ShoppingCart> getAllProducts(ShoppingCart shoppingCart);
 }

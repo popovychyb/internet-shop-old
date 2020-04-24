@@ -1,7 +1,7 @@
 package mate.academy.internetshop.dao.impl;
 
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Optional;
 import mate.academy.internetshop.dao.ShoppingCartDao;
 import mate.academy.internetshop.db.Storage;
 import mate.academy.internetshop.lib.Dao;
@@ -17,18 +17,18 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
     @Override
-    public ShoppingCart get(Long bucketId) {
+    public Optional<ShoppingCart> get(Long shoppingCart) {
         return Storage.shoppingCarts
                 .stream()
-                .filter(b -> b.getId().equals(bucketId))
-                .findFirst()
-                .orElseThrow(() ->
-                        new NoSuchElementException("Can't find bucket with id " + bucketId));
+                .filter(b -> b.getId().equals(shoppingCart))
+                .findFirst();
     }
 
     @Override
     public ShoppingCart update(ShoppingCart shoppingCart) {
-        return null;
+        ShoppingCart oldShoppingCart = get(shoppingCart.getId()).get();
+        Storage.shoppingCarts.set(Storage.shoppingCarts.indexOf(oldShoppingCart), shoppingCart);
+        return shoppingCart;
     }
 
     @Override
@@ -45,5 +45,4 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     public List<ShoppingCart> getAll() {
         return Storage.shoppingCarts;
     }
-
 }

@@ -1,7 +1,6 @@
 package mate.academy.internetshop.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 import mate.academy.internetshop.dao.ShoppingCartDao;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
@@ -48,7 +47,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public Optional<List<ShoppingCart>> getAllProducts(ShoppingCart shoppingCart) {
-        return Optional.of(shoppingCartDao.getAll());
+    public List<ShoppingCart> getAllProducts(ShoppingCart shoppingCart) {
+        return shoppingCartDao.getAll();
     }
 }

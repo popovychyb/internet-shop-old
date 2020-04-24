@@ -1,7 +1,6 @@
 package mate.academy.internetshop.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import mate.academy.internetshop.dao.OrderDao;
 import mate.academy.internetshop.lib.Inject;
@@ -10,11 +9,15 @@ import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.OrderService;
+import mate.academy.internetshop.service.ShoppingCartService;
 
 @Service
 public class OrderServiceImpl implements OrderService {
     @Inject
-    private static OrderDao orderDao;
+    private OrderDao orderDao;
+
+    @Inject
+    private ShoppingCartService shoppingCartService;
 
     @Override
     public Order create(Order order) {
@@ -24,16 +27,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order completeOrder(List<Product> products, User user) {
         Order order = create(new Order(products, user));
-        update(order);
+        shoppingCartService.clear(shoppingCartService.getByUserId(user.getId()));
         return order;
     }
 
     @Override
-    public Optional<List<Order>> getUserOrders(User user) {
-        Long userId = user.getId();
-        return Optional.of(orderDao.getAll().stream()
-                .filter(order -> order.getUser().equals(userId))
-                .collect(Collectors.toList()));
+    public List<Order> getUserOrders(User user) {
+        return orderDao.getAll().stream()
+                .filter(order -> order.getUser().equals(user))
+                .collect(Collectors.toList());
     }
 
     @Override
