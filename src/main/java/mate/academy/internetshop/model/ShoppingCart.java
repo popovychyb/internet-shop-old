@@ -7,6 +7,11 @@ public class ShoppingCart {
     private List<Product> products;
     private User user;
 
+    public ShoppingCart(List<Product> products, User user) {
+        this.products = products;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }
@@ -29,5 +34,14 @@ public class ShoppingCart {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{"
+                + "id=" + id
+                + ", products=" + products
+                + ", user=" + user
+                + '}';
     }
 }
