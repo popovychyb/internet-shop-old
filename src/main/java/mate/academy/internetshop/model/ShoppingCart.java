@@ -1,11 +1,17 @@
 package mate.academy.internetshop.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ShoppingCart {
     private Long id;
     private List<Product> products;
     private User user;
+
+    public ShoppingCart(List<Product> products, User user) {
+        this.products = products;
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
@@ -29,5 +35,33 @@ public class ShoppingCart {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{"
+                + "id=" + id
+                + ", products=" + products
+                + ", user=" + user
+                + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ShoppingCart that = (ShoppingCart) o;
+        return Objects.equals(id, that.id)
+                && Objects.equals(products, that.products)
+                && Objects.equals(user, that.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, products, user);
     }
 }
