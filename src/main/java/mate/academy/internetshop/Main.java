@@ -51,6 +51,5 @@ public class Main {
         ShoppingCart shoppingCart2 = new ShoppingCart(productService.getAll(), user);
         shoppingCartService.create(shoppingCart1);
         shoppingCartService.create(shoppingCart2);
-
     }
 }
