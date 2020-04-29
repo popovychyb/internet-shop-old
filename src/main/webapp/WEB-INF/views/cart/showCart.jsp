@@ -8,15 +8,15 @@
     <h1>Shopping cart</h1>
     <table border="1">
         <tr>
-<%--            <th>Id</th>--%>
+            <th>Id</th>
             <th>Name</th>
             <th>Price</th>
         </tr>
         <c:forEach var="product" items="${products}">
             <tr>
-<%--                <td>--%>
-<%--                    <c:out value="${product.id}"/>--%>
-<%--                </td>--%>
+                <td>
+                    <c:out value="${product.id}"/>
+                </td>
                 <td>
                     <c:out value="${product.name}"/>
                 </td>
