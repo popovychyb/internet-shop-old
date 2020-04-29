@@ -33,15 +33,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>injectData</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.InjectDataController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>injectData</servlet-name>
-        <url-pattern>/injectData</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>deleteUser</servlet-name>
         <servlet-class>mate.academy.internetshop.controllers.DeleteUserController</servlet-class>
     </servlet>
@@ -61,7 +52,7 @@
 
     <servlet>
         <servlet-name>products</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.ProductsController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.GetAllProductsController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>products</servlet-name>
@@ -70,7 +61,7 @@
 
     <servlet>
         <servlet-name>showShoppingCart</servlet-name>
-        <servlet-class>mate.academy.internetshop.controllers.ShoppingCartController</servlet-class>
+        <servlet-class>mate.academy.internetshop.controllers.GetShoppingCartController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>showShoppingCart</servlet-name>

@@ -3,6 +3,7 @@ package mate.academy.internetshop;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
+import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.OrderService;
 import mate.academy.internetshop.service.ProductService;
@@ -46,9 +47,9 @@ public class Main {
         orderService.create(order1);
         orderService.create(order2);
 
-        //        ShoppingCart shoppingCart1 = new ShoppingCart(admin);
-        //        ShoppingCart shoppingCart2 = new ShoppingCart(user);
-        //        shoppingCartService.create(shoppingCart1);
-        //        shoppingCartService.create(shoppingCart2);
+        ShoppingCart shoppingCart1 = new ShoppingCart(admin, productService.getAll());
+        ShoppingCart shoppingCart2 = new ShoppingCart(user, productService.getAll());
+        shoppingCartService.create(shoppingCart1);
+        shoppingCartService.create(shoppingCart2);
     }
 }

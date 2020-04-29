@@ -26,8 +26,14 @@ public class RegistrationController extends HttpServlet {
         String name = req.getParameter("name");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
+        String passwordRepeat = req.getParameter("passwordRepeat");
 
-        userService.create(new User(name, login, password));
-        resp.sendRedirect(req.getContextPath() + "/users/all");
+        if (password.equals(passwordRepeat)) {
+            userService.create(new User(name, login, password));
+            resp.sendRedirect(req.getContextPath() + "/users/all");
+        } else {
+            req.setAttribute("message", "Password is not valid.");
+            req.getRequestDispatcher("/WEB-INF/views/users/registration.jsp").forward(req, resp);
+        }
     }
 }
