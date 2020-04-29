@@ -1,11 +1,10 @@
 package mate.academy.internetshop.service;
 
 import java.util.List;
-import mate.academy.internetshop.dao.GenericDao;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 
-public interface ShoppingCartService extends GenericDao<ShoppingCart, Long> {
+public interface ShoppingCartService extends GenericService<ShoppingCart, Long> {
 
     ShoppingCart addProduct(ShoppingCart shoppingCart, Product product);
 
@@ -15,5 +14,5 @@ public interface ShoppingCartService extends GenericDao<ShoppingCart, Long> {
 
     ShoppingCart getByUserId(Long userId);
 
-    List<ShoppingCart> getAllProducts(ShoppingCart shoppingCart);
+    List<Product> getAllProducts(ShoppingCart shoppingCart);
 }

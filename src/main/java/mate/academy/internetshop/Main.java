@@ -47,8 +47,8 @@ public class Main {
         orderService.create(order1);
         orderService.create(order2);
 
-        ShoppingCart shoppingCart1 = new ShoppingCart(productService.getAll(), admin);
-        ShoppingCart shoppingCart2 = new ShoppingCart(productService.getAll(), user);
+        ShoppingCart shoppingCart1 = new ShoppingCart(admin, productService.getAll());
+        ShoppingCart shoppingCart2 = new ShoppingCart(user, productService.getAll());
         shoppingCartService.create(shoppingCart1);
         shoppingCartService.create(shoppingCart2);
     }

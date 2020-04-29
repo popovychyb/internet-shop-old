@@ -8,9 +8,9 @@ public class ShoppingCart {
     private List<Product> products;
     private User user;
 
-    public ShoppingCart(List<Product> products, User user) {
-        this.products = products;
+    public ShoppingCart(User user, List<Product> products) {
         this.user = user;
+        this.products = products;
     }
 
     public Long getId() {
