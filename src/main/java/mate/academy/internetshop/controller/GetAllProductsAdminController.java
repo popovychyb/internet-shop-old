@@ -1,6 +1,7 @@
-package mate.academy.internetshop.controllers;
+package mate.academy.internetshop.controller;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,7 @@ import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ProductService;
 
-public class CreateProductController extends HttpServlet {
+public class GetAllProductsAdminController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private ProductService productService =
             (ProductService) INJECTOR.getInstance(ProductService.class);
@@ -17,15 +18,9 @@ public class CreateProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/products/createProduct.jsp").forward(req, resp);
-    }
+        List<Product> allProducts = productService.getAll();
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String price = req.getParameter("price");
-        productService.create(new Product(name, Double.parseDouble(price)));
-        resp.sendRedirect(req.getContextPath() + "createProduct");
+        req.setAttribute("products", allProducts);
+        req.getRequestDispatcher("/WEB-INF/views/products/allProductsAdmin.jsp").forward(req, resp);
     }
 }
