@@ -12,9 +12,14 @@
     <br>
     <a href="${pageContext.request.contextPath}/products/createProduct">Create product</a>
     <br>
-    <a href="${pageContext.request.contextPath}/products/allProducts">All products</a>
+    <a href="${pageContext.request.contextPath}/products/allProducts">All products(user)</a>
+    <br>
+    <a href="${pageContext.request.contextPath}/allProductsAdmin">All products(admin)</a>
     <br>
     <br>
     <a href="${pageContext.request.contextPath}/cart/showCart">Show Cart</a>
+    <br>
+    <br>
+    <a href="${pageContext.request.contextPath}/showAllOrders">Show orders</a>
 </body>
 </html>
