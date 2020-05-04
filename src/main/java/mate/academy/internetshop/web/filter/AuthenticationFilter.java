@@ -19,7 +19,6 @@ public class AuthenticationFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
@@ -34,7 +33,6 @@ public class AuthenticationFilter implements Filter {
             filterChain.doFilter(req, resp);
             return;
         }
-
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
         if (userId == null || userService.get(userId) == null) {
             resp.sendRedirect("/users/login");
@@ -45,6 +43,5 @@ public class AuthenticationFilter implements Filter {
 
     @Override
     public void destroy() {
-
     }
 }
