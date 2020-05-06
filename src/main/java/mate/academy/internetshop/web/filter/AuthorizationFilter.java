@@ -26,7 +26,17 @@ public class AuthorizationFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         protectedUrls.put("/users/all", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/users/delete", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/products/create", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/products/delete", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/order/delete", Set.of(Role.RoleName.ADMIN));
         protectedUrls.put("/order/complete", Set.of(Role.RoleName.USER));
+        protectedUrls.put("/cart/show", Set.of(Role.RoleName.USER));
+        protectedUrls.put("/card/product/add", Set.of(Role.RoleName.USER));
+        protectedUrls.put("/cart/put", Set.of(Role.RoleName.USER));
+        protectedUrls.put("/cart/deleteProduct", Set.of(Role.RoleName.USER));
+        protectedUrls.put("/user/order", Set.of(Role.RoleName.USER, Role.RoleName.ADMIN));
+        protectedUrls.put("/user/orders", Set.of(Role.RoleName.USER, Role.RoleName.ADMIN));
     }
 
     @Override
@@ -50,9 +60,8 @@ public class AuthorizationFilter implements Filter {
         if (isAuthorized(user, protectedUrls.get(requestedUrl))) {
             filterChain.doFilter(req, resp);
             return;
-        } else {
-            req.getRequestDispatcher("/WEB-INF/views/users/accessDenied.jsp").forward(req, resp);
         }
+        req.getRequestDispatcher("/WEB-INF/views/users/accessDenied.jsp").forward(req, resp);
     }
 
     @Override

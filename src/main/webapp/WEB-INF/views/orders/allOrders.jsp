@@ -24,10 +24,10 @@
                     <c:out value="${order.user.name}"/>
                 </td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/showOrder?id=${order.id}">Show</a>
+                    <a href="${pageContext.request.contextPath}/oder/show?id=${order.id}">Show</a>
                 </td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/deleteOrder?id=${order.id}">Delete</a>
+                    <a href="${pageContext.request.contextPath}/order/delete?id=${order.id}">Delete</a>
                 </td>
             </tr>
         </c:forEach>

@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
-import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.ShoppingCartService;
 
@@ -21,8 +20,8 @@ public class PutToCartController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Long userId = (Long) req.getSession().getAttribute("user_id");
-        Product product = productService.get(userId);
-        shoppingCartService.addProduct(shoppingCartService.getByUserId(userId), product);
+        shoppingCartService.addProduct(shoppingCartService.getByUserId(userId),
+                productService.get(Long.parseLong(req.getParameter("product_id"))));
         resp.sendRedirect(req.getContextPath() + "/products/allProducts");
     }
 }

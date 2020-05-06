@@ -22,6 +22,6 @@ public class DeleteProductFomShoppingCartController extends HttpServlet {
         Long userId = (Long) req.getSession().getAttribute("user_id");
         shoppingCartService.deleteProduct(shoppingCartService.getByUserId(userId),
                 productService.get(Long.parseLong(req.getParameter("id"))));
-        resp.sendRedirect(req.getContextPath() + "/cart/showCart");
+        resp.sendRedirect(req.getContextPath() + "/cart/show");
     }
 }
