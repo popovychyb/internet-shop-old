@@ -1,11 +1,13 @@
 package mate.academy.internetshop.controller;
 
 import java.io.IOException;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
+import mate.academy.internetshop.model.Role;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.UserService;
 
@@ -29,7 +31,7 @@ public class RegistrationController extends HttpServlet {
         String passwordRepeat = req.getParameter("passwordRepeat");
 
         if (password.equals(passwordRepeat)) {
-            userService.create(new User(name, login, password));
+            userService.create(new User(name, login, password, Set.of(Role.of("USER"))));
             resp.sendRedirect(req.getContextPath() + "/users/all");
         } else {
             req.setAttribute("message", "Password is not valid.");
