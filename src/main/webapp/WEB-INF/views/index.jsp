@@ -21,5 +21,10 @@
     <br>
     <br>
     <a href="${pageContext.request.contextPath}/showAllOrders">Show orders</a>
+    <br>
+    <br>
+    <a href="${pageContext.request.contextPath}/logout">Logout</a>
+    <br>
+    <a href="${pageContext.request.contextPath}/inject">Inject data</a>
 </body>
 </html>

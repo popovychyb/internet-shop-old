@@ -1,8 +1,10 @@
 package mate.academy.internetshop;
 
+import java.util.Set;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Order;
 import mate.academy.internetshop.model.Product;
+import mate.academy.internetshop.model.Role;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.OrderService;
@@ -37,8 +39,8 @@ public class Main {
         productService.create(product1);
         productService.create(product2);
 
-        User admin = new User("Admin", "admin", "admin");
-        User user = new User("User", "user1", "1234");
+        User admin = new User("Admin", "admin", "admin", Set.of(Role.of("ADMIN")));
+        User user = new User("User", "user1", "1234", Set.of(Role.of("USER")));
         userService.create(admin);
         userService.create(user);
 
