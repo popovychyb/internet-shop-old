@@ -10,11 +10,10 @@ import mate.academy.internetshop.exception.AuthenticationException;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.security.AuthenticationService;
-import mate.academy.internetshop.web.filter.AuthenticationFilter;
 import org.apache.log4j.Logger;
 
 public class LoginController extends HttpServlet {
-    private static final Logger LOGGER = Logger.getLogger(AuthenticationFilter.class);
+    private static final Logger LOGGER = Logger.getLogger(LoginController.class);
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private AuthenticationService authService =
             (AuthenticationService) INJECTOR.getInstance(AuthenticationService.class);
